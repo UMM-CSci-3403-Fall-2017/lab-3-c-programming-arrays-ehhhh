@@ -1,5 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
 
-int mergeUp(int* values, int start, int end, int mid) {
+void mergeUp(int* values, int start, int end, int mid) {
 	int rangeSize = end - start;
 		
 	int cur1 = start;
@@ -31,31 +33,23 @@ int mergeUp(int* values, int start, int end, int mid) {
 	for (int i = 0; i < rangeSize; i++) {
 		values[i + start] = dest[i];
 	}
+	free(dest);
 
 }
 
-int sort(int* values, int start, int end) {
+void sort(int* values, int start, int end) {
 	int rangeSize = end - start;
 	int mid = start + rangeSize/2;
-	int temp = 0;
-
-
-	if (rangeSize > 2) {
+	
+	if (rangeSize >= 2) {
 		sort(values, start, mid);
 		sort(values, mid, end);
 		mergeUp(values, start, end, mid);
 	}	
-	else {
-		if (values[0] > values[1]) {
-			int temp = values[1];
-			values[1] = values[0];
-			values[0] = temp;	
-		}
-	}
 	
 }
 
-int main(int* values) {
-	sort(values, 0, sizeof(values)/sizeof(int));
+void mergesort(int size, int* values) {
+	sort(values, 0, size);
 }
 
