@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//merges sorted partitions, placing them in the correct indices
 void mergeUp(int* values, int start, int end, int mid) {
 	int rangeSize = end - start;
 		
@@ -37,6 +38,7 @@ void mergeUp(int* values, int start, int end, int mid) {
 
 }
 
+//recursively sorts partitions of the array, then calls mergeUp on them
 void sort(int* values, int start, int end) {
 	int rangeSize = end - start;
 	int mid = start + rangeSize/2;
@@ -49,6 +51,9 @@ void sort(int* values, int start, int end) {
 	
 }
 
+
+//takes the array and its size and passes it along with
+//the correct starting and ending points to the algorithm
 void mergesort(int size, int* values) {
 	sort(values, 0, size);
 }
